@@ -59,11 +59,12 @@ function Header() {
                                 <Link to="/">Book a Transist</Link>
                             </li>
                             
-                            <li >
-                                <a href="/bookings">Bookings</a>
-                            </li>
+                           
                             {user ? (
                                 <>
+                                 <li >
+                                    <Link to="/bookings">Bookings</Link>
+                                </li>
                                 <li >
                                     <Link> <h3>{user && user.number_plate}</h3></Link>
                                 
@@ -92,27 +93,38 @@ function Header() {
 
                 <nav id="mobile-menu-01" className="mobile-menu collapse">
                     <ul id="mobile-primary-menu" className="menu">
-                        <li >
-                            <a href="index.html">Book a Transist</a>
-                        </li>
-                       
-                        <li >
-                            <a href="stations.html">Stations</a>
-                        </li>
-                        <li >
-                                <Link to="/register">Register</Link>
+                    <li >
+                                <Link to="/">Book a Transist</Link>
                             </li>
-                            <li >
+                            
+                           
+                            {user ? (
+                                <>
+                                 <li >
+                                    <Link to="/bookings">Bookings</Link>
+                                </li>
+                                <li >
+                                    <Link> <h3>{user && user.number_plate}</h3></Link>
+                                
+                                </li>
+                                <li >
+                                    <Link><button onClick={onLogout} >Log Out</button></Link>
+                                
+                                </li>
+                                </>
+                                
+                            ) : (
+                                <>
+                                <li >
+                                <Link to="/register">Register</Link>
+                                </li>
+                                <li >
                                 <Link to="/login">LogIn</Link>
                             </li>
+                            </>
+                            )}
                     </ul>
 
-                   
-                    <ul className="mobile-topnav container">
-                        <li><a href="#">MY ACCOUNT</a></li>
-                        <li><a href="#sgr-login" className="soap-popupbox">LOGIN</a></li>
-                        <li><a href="#sgr-signup" className="soap-popupbox">SIGNUP</a></li>
-                    </ul>
                   
 
                 </nav>

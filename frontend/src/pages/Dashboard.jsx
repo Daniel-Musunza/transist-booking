@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { reset, fetchUsers } from '../features/auth/authSlice'
+import { addbooking } from '../features/bookings/bookingSlice'
+import Spinner from '../components/Spinner'
 const Dashboard = () => {
 
 
@@ -49,7 +51,7 @@ const Dashboard = () => {
     return truck.label;
   };
 
-  const [searchResults, setSearchResults] = useState([] || null);
+  const [searchResults, setSearchResults] = useState(null);
   const [selectedTransist, setSelectedTransist] = useState(null);
 
   const [transist_type, setTransistType] = useState('');
@@ -58,6 +60,10 @@ const Dashboard = () => {
   const [to, setTo] = useState('');
   const [departure_date, setDepartureDate] = useState('');
 
+  const [full_names, setFullNames] = useState('');
+  const [id, setID] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
+  
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = (id) => {
@@ -82,8 +88,6 @@ const Dashboard = () => {
   async function Search(event) {
     event.preventDefault();
 
-    // Log the current state of users before filtering
-    console.log("Users before filtering:", users);
 
     const newSearchResults = users.filter((user) =>
       (user.transist_type === transist_type || transist_type === 'any') &&
@@ -95,17 +99,40 @@ const Dashboard = () => {
       )
     );
 
-    // Log the search parameters and results
-    console.log("Search parameters:", transist_type, departure_date, space, from, to);
-    console.log("Results:", newSearchResults);
 
     // Set the search results state
     setSearchResults(newSearchResults);
   }
 
+  const handleBooking = async (e, selectedTransist) => {
+    e.preventDefault();
 
 
+    const amount = space * selectedTransist.price;
+    const number_plate = selectedTransist.number_plate;
+    const departure_date = selectedTransist.departure_date;
+    const formData = {
+      id,
+      phone_number,
+      full_names,
+      space,
+      from,
+      to,
+      amount,
+      number_plate,
+      departure_date
+    }
 
+    console.log(formData);
+    // Now you can dispatch your API call with the formData
+    dispatch(addbooking(formData));
+
+    alert("Booked Successfully ...");
+  };
+
+  if (isLoading) {
+    return <Spinner />
+  }
   return (
     <div>
       <section id="content"
@@ -242,7 +269,9 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-      {searchResults.length > 0 && (
+      {searchResults == null ?(
+        <></>
+      ): searchResults.length > 0 ? (
         <div>
           <div className="page-title-container style1">
             <div className="container">
@@ -322,6 +351,10 @@ const Dashboard = () => {
             </div>
           </section>
         </div>
+      ): searchResults.length === 0 ? (
+        <h2 style={{textAlign: 'center'}}>Zero Results</h2>
+      ) : (
+        <></>
       )}
 
       {showModal && (
@@ -375,6 +408,8 @@ const Dashboard = () => {
                     id='name'
                     name='name'
                     placeholder='Your Full Names'
+                    value={full_names}
+                onChange={(e) => setFullNames(e.target.value)}
                   />
                 </div>
                 <div className='form-group'>
@@ -384,6 +419,8 @@ const Dashboard = () => {
                     id='id_number'
                     name='id_number'
                     placeholder='National ID Number'
+                    value={id}
+                    onChange={(e) => setID(e.target.value)}
                   />
                 </div>
                 <div className='form-group'>
@@ -393,11 +430,13 @@ const Dashboard = () => {
                     id='phone_number'
                     name='phone_number'
                     placeholder='Your Phone Number'
+                    value={phone_number}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
 
                 <div className='form-group'>
-                  <button type='submit' className='btn btn-block'>
+                  <button type='submit' className='btn btn-block' onClick={(e) => handleBooking(e, selectedTransist)}>
                     Book Now
                   </button>
                 </div>

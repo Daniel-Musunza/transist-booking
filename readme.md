@@ -1,6 +1,6 @@
-# subjectsetter MERN app
+# bookingsetter MERN app
 
-This is the subjectsetter app
+This is the bookingsetter app
 
 ## Usage
 

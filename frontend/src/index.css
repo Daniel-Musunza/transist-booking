@@ -22,6 +22,74 @@
     background-color: rgba(165, 42, 42, 0.559);
 }
 
+.bookings-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for small screens */
+  @media only screen and (max-width: 767px) {
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .bookings-table {
+        display: none;
+    }
+    .booking-card {
+      width: 100%;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    .card-header {
+      background-color: #f2f2f2;
+      padding: 10px;
+      font-weight: bold;
+    }
+  
+    .card-content {
+      padding: 20px;
+    }
+  }
+  
+  /* Styles for large screens */
+  @media only screen and (min-width: 768px) {
+    .cards-container{
+        display: none;
+    }
+    .bookings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+  
+    .bookings-table th, .bookings-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+  
+    .bookings-table th {
+      background-color: #f2f2f2;
+    }
+  
+    .bookings-table tbody tr:hover {
+      background-color: #f5f5f5;
+    }
+  }
+  
+  
 .loadingSpinnerContainer {
     position: fixed;
     top: 0;
