@@ -13,7 +13,7 @@ const app = express();
 
 
 const corsOptions = {
-  origin: 'https://transist.vercel.app',
+  origin: 'https://transist-booking.vercel.app',
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
 };
 
