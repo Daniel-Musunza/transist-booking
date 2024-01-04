@@ -87,33 +87,27 @@ const Dashboard = () => {
 
   async function Search(event) {
     event.preventDefault();
-
-
+  
     const newSearchResults = users.filter((vehicle) => {
-      const isSameDirection = (
-        (vehicle.from <= from && vehicle.to >= to && vehicle.from < to && vehicle.to > from) ||
-        (vehicle.from >= from && vehicle.to <= to && vehicle.from > to && vehicle.to < from)
-      );
+      
+        if((vehicle.transist_type == transist_type) || (transist_type == 'any')){
+          if(vehicle.departure_date == departure_date){
+            if(vehicle.space >= space){
+              if(((vehicle.from <= from) && (vehicle.to >= to)) || ((vehicle.from >= from) && (vehicle.to <= to))){
+                return vehicle
+              }
+            }
+          }
+        }
     
-      const isMovingForward = vehicle.from < vehicle.to;
-      const isUserInVehicleDirection = isMovingForward
-        ? (from >= vehicle.from && to <= vehicle.to)
-        : (from <= vehicle.from && to >= vehicle.to);
-    
-      return (
-        (vehicle.transist_type === transist_type || transist_type === 'any') &&
-        vehicle.departure_date === departure_date &&
-        vehicle.space >= space &&
-        isSameDirection &&
-        isUserInVehicleDirection
-      );
     });
+
     
-
-
+  
     // Set the search results state
     setSearchResults(newSearchResults);
   }
+  
 
   const handleBooking = async (e, selectedTransist) => {
     e.preventDefault();
