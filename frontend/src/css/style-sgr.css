@@ -368,13 +368,7 @@ img.full-width {
     background-color: #f5f5f5 !important
 }
 
-@font-face {
-    font-family: soap-icons;
-    src: url(../fonts/soap-iconsc526.eot?26664784);
-    src: url(../fonts/soap-iconsc526.eot?26664784#iefix) format("embedded-opentype"), url(../fonts/soap-iconsc526.woff?26664784) format("woff"), url(../fonts/soap-iconsc526.ttf?26664784) format("truetype"), url(../fonts/soap-iconsc526.svg?26664784#soap-icons) format("svg");
-    font-weight: 400;
-    font-style: normal
-}
+
 
 [class*=" soap-icon"],
 [class^=soap-icon] {
@@ -1219,10 +1213,7 @@ img.full-width {
     content: '\e8c0'
 }
 
-@font-face {
-    font-family: NexaBlack;
-    src: url(../fonts/NexaBlackd41d.eot?) format("eot"), url(../fonts/NexaBlack.otf) format("opentype"), url(../fonts/NexaBlack.woff) format("woff"), url(../fonts/NexaBlack.ttf) format("truetype"), url(../fonts/NexaBlack.svg#NexaBlack) format("svg")
-}
+
 
 #page-wrapper {
     position: relative;
@@ -1233,13 +1224,7 @@ img.full-width {
     background: #f5f5f5
 }
 
-.global-map-area {
-    background: url(../images/global-map.jpg) no-repeat
-}
 
-.map-area2 {
-    background: url(../images/global-map.jpg) no-repeat
-}
 
 .global-map-area .description p {
     color: #ffa338;
@@ -2073,15 +2058,7 @@ button.btn-extra.yellow>span em {
     overflow: hidden
 }
 
-.icon-check:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30px;
-    height: 100%;
-    background: url(../images/icon/icon-check.png) no-repeat center center #7db921
-}
+
 
 .icon-check:hover:after {
     background-color: #f39323
@@ -2512,7 +2489,6 @@ blockquote.style2:before {
     -ms-transform: rotateY(180deg) scale(.5, .5);
     -o-transform: rotateY(180deg) scale(.5, .5);
     transform: rotateY(180deg) scale(.5, .5);
-    background: url(../images/icon/hover-effect.png) no-repeat center;
     -moz-opacity: 0;
     -khtml-opacity: 0;
     opacity: 0;
@@ -7409,7 +7385,7 @@ ul.check-circle li:before {
 }
 
 #header .mobile-menu-toggle {
-    background: url(../images/icon/mobile-menu.png) no-repeat center center #882c37;
+    background:  no-repeat center center #882c37;
     padding: 0;
     margin: 0;
     height: 66px;
@@ -7455,7 +7431,7 @@ ul.check-circle li:before {
     display: block;
     width: 130px;
     height: 30px;
-    background: url(../images/logo_txt.png) no-repeat #882c37;
+    background:  no-repeat #882c37;
     content: "";
     top: 0;
     right: 0
@@ -7976,12 +7952,10 @@ ul.check-circle li:before {
 
 #header .logo a,
 .chaser .logo a {
-    background: url(../images/logo.png) no-repeat 0 0;
     display: block
 }
 
 #footer .logo a {
-    background: url(../images/footer_logo.png) no-repeat 0 0;
     display: block
 }
 
@@ -8001,9 +7975,6 @@ ul.check-circle li:before {
     padding-left: 20px !important
 }
 
-.lang-flag.en-us {
-    background: url(../images/icon/flags/en-us.png) no-repeat left center
-}
 
 #main-menu ul.menu li:not(.megamenu-menu) ul,
 .chaser .menu li:not(.megamenu-menu) ul,
@@ -12809,11 +12780,6 @@ button.ui-button::-moz-focus-inner {
     display: inline-block
 }
 
-#footer.style1 {
-    background: url(../images/themes/footer/style01/sand.png) no-repeat center top;
-    padding-top: 132px;
-    margin-top: 40px
-}
 
 #footer.style1 .footer-wrapper {
     background: #f5e1ba;
@@ -12899,10 +12865,6 @@ button.ui-button::-moz-focus-inner {
     background: #fff
 }
 
-#footer.style1 .logo a {
-    background-image: url(../images/logo/skin2-logo.png)
-}
-
 #footer.style1 .copyright p {
     color: #9e9e9e
 }
@@ -12911,11 +12873,6 @@ button.ui-button::-moz-focus-inner {
     border-color: #e01a33
 }
 
-#footer.style2 {
-    background: url(../images/themes/footer/style02/sky.png) no-repeat center top;
-    padding-top: 132px;
-    margin-top: 80px
-}
 
 #footer.style2 .footer-wrapper {
     background: #daf8ff;
@@ -12996,26 +12953,7 @@ button.ui-button::-moz-focus-inner {
     background-image: url(http://placehold.it/241x184)
 }
 
-#footer.style2 .bottom {
-    background: #fff
-}
 
-#footer.style2 .logo a {
-    background-image: url(../images/logo/skin3-logo.png)
-}
-
-#footer.style2 .copyright p {
-    color: #9e9e9e
-}
-
-#footer.style2 #back-to-top i {
-    border-color: #ff6000
-}
-
-#footer.style3 {
-    background: url(../images/themes/footer/style03/sea.png) no-repeat center 60px #f8f7f3;
-    padding-top: 192px
-}
 
 #footer.style3 .footer-wrapper {
     padding-top: 0
@@ -13103,24 +13041,10 @@ button.ui-button::-moz-focus-inner {
 #footer.style3 .bottom {
     background: #fff
 }
-
-#footer.style3 .logo a {
-    background-image: url(../images/logo/skin3-logo.png)
-}
-
 #footer.style3 .copyright p {
     color: #9e9e9e
 }
 
-#footer.style3 #back-to-top i {
-    border-color: #ff6000;
-    color: #12a0c3
-}
-
-#footer.style4>.footer-wrapper {
-    background: url(../images/themes/footer/style04/sky.png) no-repeat center bottom;
-    padding-bottom: 0
-}
 
 #footer.style4>.footer-wrapper>.container:first-child {
     position: relative;
@@ -13155,10 +13079,6 @@ button.ui-button::-moz-focus-inner {
     margin-top: 0
 }
 
-#footer.style5>.footer-wrapper {
-    background: url(../images/themes/footer/style05/sky.png) no-repeat center bottom;
-    padding-bottom: 0
-}
 
 #footer.style5>.footer-wrapper>.container:first-child {
     position: relative;
@@ -13193,10 +13113,6 @@ button.ui-button::-moz-focus-inner {
     margin-top: 0
 }
 
-#footer.style6>.footer-wrapper {
-    background: url(../images/themes/footer/style06/sky.png) no-repeat center bottom;
-    padding-bottom: 0
-}
 
 #footer.style6>.footer-wrapper>.container:first-child {
     position: relative;
@@ -13367,11 +13283,7 @@ button.ui-button::-moz-focus-inner {
     padding-left: 0
 }
 
-#content.image-bg1 {
-    background: url(../images/wide.jpg) no-repeat top center;
-    background-color: #fafafa;
-    min-height: 880px
-}
+
 
 .investor-list img {
     -webkit-filter: grayscale(100%);
@@ -14678,7 +14590,6 @@ button.ui-button::-moz-focus-inner {
     width: 100px;
     height: 102px;
     color: #fff;
-    background: url(../images/icon/discount.png) no-repeat
 }
 
 .image-box .discount {
@@ -14972,10 +14883,6 @@ button.ui-button::-moz-focus-inner {
 
 .travel-ideas .suggested-places ul.check-square li>a {
     text-transform: uppercase
-}
-
-.teaser-call {
-    background: url(../images/call-girl.jpg) no-repeat scroll right bottom #fff
 }
 
 .teaser-bus a {
@@ -15934,7 +15841,6 @@ svg:not(:root) {
 .SgrTicketTrip .SgrTicketTimeline:before {
     content: "";
     position: absolute;
-    background: url(../images/svg/trip-border.svg) left top repeat-y;
     width: 2px;
     left: 8px;
     top: 0;
