@@ -271,3 +271,150 @@
       transform: rotate(360deg);
     }
   }
+
+  /* old css */
+  section#content .slideshow-bg {
+      min-height: 270px;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+  }
+
+  #main {
+      padding-top: 70px;
+  }
+
+  .page-title,
+  .page-description {
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+  }
+
+  .page-title {
+      /**font-size: 4.1667em;**/
+      font-size: 30px;
+      font-weight: bold;
+  }
+
+  .page-description {
+      font-size: 2em;
+      margin-bottom: 40px;
+  }
+
+  .featured {
+      position: absolute;
+      right: 50px;
+      bottom: 50px;
+      z-index: 9;
+      margin-bottom: 0;
+      text-align: right;
+  }
+
+  .featured figure a {
+      border: 2px solid #fff;
+  }
+
+  .featured .details {
+      margin-right: 10px;
+  }
+
+  .featured .details>* {
+      color: #fff;
+      line-height: 1.25em;
+      margin: 0;
+      font-weight: bold;
+      text-shadow: 2px -2px rgba(0, 0, 0, 0.2);
+  }
+
+  section#content {
+      min-height: 300px
+  }
+
+  a h5.box-title {
+      color: #e3b7c8;
+  }
+
+  .more-popular-destinations ul.triangle li:before {
+      color: #c4c4c4;
+      top: -5px;
+      position: relative;
+  }
+
+  .more-popular-destinations ul {
+      border-right: 0px;
+  }
+
+  .icon-check:hover:after {
+      background-color: #ffdc01;
+  }
+
+  /**ul.search-tabs li { float: right; }**/
+  section#content {
+      background: #f5f5f5
+  }
+
+  .promo-box .m-title em {
+      font-size: 20px;
+      line-height: 10px;
+      font-style: normal;
+      font-weight: 500;
+  }
+
+  #footer {
+      margin-top: 0px;
+  }
+
+  @media (max-width: 768px) {
+      #main {
+          padding-top: 20px;
+      }
+
+      .page-title {
+          font-size: 2.1667em;
+          text-shadow: 0px 1px 2px #444;
+      }
+
+      .page-description {
+          font-size: 1.7em;
+          margin-bottom: 20px;
+          text-shadow: 0px 1px 2px #444;
+      }
+
+      .section {
+          padding-top: 30px;
+          padding-bottom: 30px;
+      }
+
+      .mobile-section .image-wrapper {
+          padding-top: 10px;
+      }
+  }
+
+  .font-alert {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgb(37, 42, 49);
+      line-height: 22px;
+      text-align: left;
+  }
+
+  .modal-dialog-center {
+      margin-top: 10%;
+  }
+
+  .alert::before {
+      content: "!" !important;
+  }
+
+  .hide_data {
+      display: none !important;
+  }
+  .card{
+      width: 300px;
+      height: 500px;
+  }
+  @media (max-width: 768px) {
+      .card{
+      width: 100%;
+  } 
+  }

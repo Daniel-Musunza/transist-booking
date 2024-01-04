@@ -1,6 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './css/animate.min.css';
+import './css/boostrap.min.css';
+import './css/card-js.min.css';
+import './css/custom.css';
+import './css/font-awesome.min.css';
+import './css/jquery.flexdatalist.min.css';
+import './css/responsivecss';
+import './css/style-sgr.css';
+import './css/updates.css';
+
 import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
