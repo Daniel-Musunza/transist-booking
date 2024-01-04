@@ -44,7 +44,7 @@ function Header() {
 
       <div className="logo1" style={{ marginLeft: '20px' }}>
         <a href="#">
-            <h2>Kenya Transists</h2> 
+            <h2>Transist</h2> 
         </a>
       </div>
         <button style={{fontSize: '40px', marginRight: '20px', color: 'maroon' , background: 'transparent'}} onClick={toggleMenu} className='humbugger'><i class="fa-solid fa-bars"></i></button>
