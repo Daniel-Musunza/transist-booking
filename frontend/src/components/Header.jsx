@@ -52,8 +52,9 @@ function Header() {
       <nav>
         <div className="navbar" style={{alignItems: 'center', justifyContent: 'center' }}>
           <Link to="/">Book a Transist</Link>
+          {user && (
           <Link to="/bookings">Bookings</Link>
-
+          )}
         </div>
 
         <div className="right-data">
@@ -79,7 +80,9 @@ function Header() {
           </div>
           <div className="navbar" style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Link to="/">Book a Transist</Link>
+            {user && (
             <Link to="/bookings" >Bookings</Link>
+            )}
           </div>
 
           <div className="right-data">
