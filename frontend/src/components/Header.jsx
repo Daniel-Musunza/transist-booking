@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 
 function Header() {
-  const [ showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -29,7 +29,7 @@ function Header() {
     dispatch(reset())
     navigate('/')
   }
-  
+
 
   const toggleMenu = () => {
     setShowMenu((prevShowMenu) => !prevShowMenu);
@@ -40,99 +40,69 @@ function Header() {
 
 
   return (
-    <header id="header" className="navbar-static-top">
+    <section className="header" id="header" style={{ backgroundColor: '#fff', height: '80px' }}>
 
-            <div className="main-header">
+      <div className="logo1" style={{ marginLeft: '20px' }}>
+        <a href="#">
+            <h2>Kenya Transists</h2> 
+        </a>
+      </div>
+        <button style={{fontSize: '40px', marginRight: '20px', color: 'maroon' , background: 'transparent'}} onClick={toggleMenu} className='humbugger'><i class="fa-solid fa-bars"></i></button>
+  
+      <nav>
+        <div className="navbar" style={{alignItems: 'center', justifyContent: 'center' }}>
+          <Link to="/">Book a Transist</Link>
+          <Link to="/bookings">Bookings</Link>
 
-                <i className="fa-solid fa-bars mobile-menu-toggle"></i>
+        </div>
 
-
-                <div className="container">
-                    <h1 className="logo navbar-brand">
-                        <h2 title="Buupass - home">
-                            Kenya Transists
-                        </h2>
-                    </h1>
-                    <nav id="main-menu" role="navigation">
-                        <ul className="menu">
-                            <li >
-                                <Link to="/">Book a Transist</Link>
-                            </li>
-                            
-                           
-                            {user ? (
-                                <>
-                                 <li >
-                                    <Link to="/bookings">Bookings</Link>
-                                </li>
-                                <li >
-                                    <Link> <h3>{user && user.number_plate}</h3></Link>
-                                
-                                </li>
-                                <li >
-                                    <Link><button onClick={onLogout} >Log Out</button></Link>
-                                
-                                </li>
-                                </>
-                                
-                            ) : (
-                                <>
-                                <li >
-                                <Link to="/register">Register</Link>
-                                </li>
-                                <li >
-                                <Link to="/login">LogIn</Link>
-                            </li>
-                            </>
-                            )}
-                            
-                            
-                        </ul>
-                    </nav>
-                </div>
-
-                <nav id="mobile-menu-01" className="mobile-menu collapse">
-                    <ul id="mobile-primary-menu" className="menu">
-                    <li >
-                                <Link to="/">Book a Transist</Link>
-                            </li>
-                            
-                           
-                            {user ? (
-                                <>
-                                 <li >
-                                    <Link to="/bookings">Bookings</Link>
-                                </li>
-                                <li >
-                                    <Link> <h3>{user && user.number_plate}</h3></Link>
-                                
-                                </li>
-                                <li >
-                                    <Link><button onClick={onLogout} >Log Out</button></Link>
-                                
-                                </li>
-                                </>
-                                
-                            ) : (
-                                <>
-                                <li >
-                                <Link to="/register">Register</Link>
-                                </li>
-                                <li >
-                                <Link to="/login">LogIn</Link>
-                            </li>
-                            </>
-                            )}
-                    </ul>
-
-                  
-
-                </nav>
+        <div className="right-data">
+          {user ? (
+            <div className='profile' style={{ display: 'flex' }}>
+              <h4>{user && user.number_plate}</h4>
+              <button onClick={onLogout}>Log Out</button>
             </div>
+          ) : (
+            <>
+             <button> <Link to="/login"> Log In</Link></button>
+             <button> <Link to="/register"> Register</Link></button>
+            </>
+           
+          )}
 
+        </div>
+      </nav>
+      {showMenu && (
+        <div className='mobile-nav' onClick={closeMenu}>
+          <div className="right-data" style={{marginTop: '50px', marginBottom: '0px'}}>
+            <button onClick={closeMenu} style={{width: '80px',marginBottom: '0px'}}>close</button>
+          </div>
+          <div className="navbar" style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Link to="/">Book a Transist</Link>
+            <Link to="/bookings" >Bookings</Link>
+          </div>
 
-        </header>
+          <div className="right-data">
+          {user ? (
+            <div className='profile' style={{ display: 'flex' }}>
+              <h4>{user && user.number_plate}</h4>
+              <button onClick={onLogout}>Log Out</button>
+            </div>
+          ) : (
+            <>
+             <button> <Link to="/login"> Log In</Link></button>
+             <button> <Link to="/register"> Register</Link></button>
+            </>
+           
+          )}
+
+        </div>
+        </div>
+      )}
+
+    </section>
   )
 }
 
 export default Header
+

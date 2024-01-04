@@ -63,7 +63,7 @@ const Dashboard = () => {
   const [full_names, setFullNames] = useState('');
   const [id, setID] = useState('');
   const [phone_number, setPhoneNumber] = useState('');
-  
+
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = (id) => {
@@ -144,7 +144,7 @@ const Dashboard = () => {
               <li><a href="#flights-tab" data-toggle="tab">Login</a></li>
             </ul>
             <div className="search-tab-content">
-              <form action="" method="post" onSubmit={Search}>
+              <form onSubmit={Search}>
                 <div className="row">
                   <div className="col-md-12">
                     <h2 style={{ color: '#fff', fontSize: '25px' }}>
@@ -230,33 +230,39 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-2 col-xs-12">
-                    <div className="form-group">
-                      <label style={{ color: 'white' }}>Space - In Square Meters</label>
-
-                      <input type="number" required="true" className="form-control schedule_type"
-                        placeholder="1" min="1"
-                        value={space}
-                        onChange={(e) => setSpace(e.target.value)}
-                      />
-
+                  <div className="col-md-3 changetype">
+                    <div className="form-group row" >
+                    <div className="col-md-12 col-xs-12">
+                          <label style={{ color: 'white' }}>Space - In Square Meters</label>
+                          <input
+                            type="number"
+                            required={true}
+                            className="form-control"
+                            placeholder="1"
+                            min="1"
+                            value={space}
+                            onChange={(e) => setSpace(e.target.value)}
+                          />
+                    </div>
                     </div>
                   </div>
-                  <div className="col-md-2 col-xs-12">
-                    <div className="form-group">
-                      <label style={{ color: 'white' }}>Departure Date</label>
-
-                      <input type="date" required="true" className="form-control schedule_type"
-                        placeholder="mm/dd/yyyy"
-                        value={departure_date}
-                        onChange={(e) => setDepartureDate(e.target.value)}
-                      />
-
+                  <div className="col-md-3 changetype">
+                    <div className="form-group row" >
+                    <div className="col-md-12 col-xs-12">
+                          <label style={{ color: 'white' }}>Departure Date</label>
+                          <input
+                            type="date"
+                            required={true}
+                            className="form-control"
+                            placeholder="mm/dd/yyyy"
+                            value={departure_date}
+                            id="date"
+                            name="date"
+                            onChange={(e) => setDepartureDate(e.target.value)}
+                          />
+                      </div>
                     </div>
                   </div>
-
-
-
                   <div className="form-group col-md-2">
                     <label className="hidden-xs">&nbsp;</label>
                     <button className="full-width" type="submit" style={{ background: '#ff5624' }}>Search</button>
@@ -269,9 +275,9 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-      {searchResults == null ?(
+      {searchResults == null ? (
         <></>
-      ): searchResults.length > 0 ? (
+      ) : searchResults.length > 0 ? (
         <div>
           <div className="page-title-container style1">
             <div className="container">
@@ -351,8 +357,8 @@ const Dashboard = () => {
             </div>
           </section>
         </div>
-      ): searchResults.length === 0 ? (
-        <h2 style={{textAlign: 'center'}}>Zero Results</h2>
+      ) : searchResults.length === 0 ? (
+        <h2 style={{ textAlign: 'center' }}>Zero Results</h2>
       ) : (
         <></>
       )}
@@ -372,9 +378,9 @@ const Dashboard = () => {
                 position: 'fixed',
                 zIndex: '999',
                 top: '10px',
-                right: '10px', 
-                color: 'black', 
-                background: '#fff', 
+                right: '10px',
+                color: 'black',
+                background: '#fff',
                 borderRadius: '10px'
               }}>
               Close
@@ -409,7 +415,7 @@ const Dashboard = () => {
                     name='name'
                     placeholder='Your Full Names'
                     value={full_names}
-                onChange={(e) => setFullNames(e.target.value)}
+                    onChange={(e) => setFullNames(e.target.value)}
                   />
                 </div>
                 <div className='form-group'>
