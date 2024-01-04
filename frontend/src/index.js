@@ -7,7 +7,7 @@ import './css/card-js.min.css';
 import './css/custom.css';
 import './css/font-awesome.min.css';
 import './css/jquery.flexdatalist.min.css';
-import './css/responsivecss';
+import './css/responsive.css';
 import './css/style-sgr.css';
 import './css/updates.css';
 
