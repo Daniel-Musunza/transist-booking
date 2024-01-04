@@ -1,6 +1,10 @@
 .form{
     width: 400px;
 }
+form,
+article{
+  width:100%!important;
+}
 .register ,
 .booking-container
 {

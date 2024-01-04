@@ -89,15 +89,26 @@ const Dashboard = () => {
     event.preventDefault();
 
 
-    const newSearchResults = users.filter((user) =>
-      (user.transist_type === transist_type || transist_type === 'any') &&
-      user.departure_date === departure_date &&
-      user.space >= space &&
-      (
-        (user.from <= from && user.to >= to && user.from < to && user.to > from) ||  // Check if the user's route includes the desired route
-        (user.from >= from && user.to <= to && user.from > to && user.to < from)     // Check if the user's route is included in the desired route
-      )
-    );
+    const newSearchResults = users.filter((vehicle) => {
+      const isSameDirection = (
+        (vehicle.from <= from && vehicle.to >= to && vehicle.from < to && vehicle.to > from) ||
+        (vehicle.from >= from && vehicle.to <= to && vehicle.from > to && vehicle.to < from)
+      );
+    
+      const isMovingForward = vehicle.from < vehicle.to;
+      const isUserInVehicleDirection = isMovingForward
+        ? (from >= vehicle.from && to <= vehicle.to)
+        : (from <= vehicle.from && to >= vehicle.to);
+    
+      return (
+        (vehicle.transist_type === transist_type || transist_type === 'any') &&
+        vehicle.departure_date === departure_date &&
+        vehicle.space >= space &&
+        isSameDirection &&
+        isUserInVehicleDirection
+      );
+    });
+    
 
 
     // Set the search results state
