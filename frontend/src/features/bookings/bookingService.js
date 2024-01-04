@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/api/bookings/'
+const API_URL = 'https://transist-api.onrender.com/api/bookings/'
 
 const addbooking = async (bookingData, token) => {
   const config = {
