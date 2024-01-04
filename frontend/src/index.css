@@ -1,9 +1,11 @@
 .form{
     width: 400px;
+    padding: 0!important;
 }
 form,
 article{
   width:100%!important;
+  margin: 0!important;
 }
 .register ,
 .booking-container

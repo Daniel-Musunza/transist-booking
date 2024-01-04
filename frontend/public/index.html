@@ -15,7 +15,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link href="css/jquery.flexdatalist.min.css" rel="stylesheet" type="text/css">
+    <link href="css/card-js.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -25,15 +31,172 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
     <script src="https://kit.fontawesome.com/332a0bbd7c.js" crossorigin="anonymous"></script>
+    <!-- Main Style -->
+    <link id="main-style" rel="stylesheet" href="css/style-sgr.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Updated Styles -->
+    <link rel="stylesheet" href="css/updates.css">
+
+    <!-- Responsive Styles -->
+    <link rel="stylesheet" href="css/responsive.css">
 
     <!-- favicon -->
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
-   
+    <style type="text/css">
+        .alert::before {
+            content: "!" !important;
+        }
+
+        .hide_data {
+            display: none !important;
+        }
+        .card{
+            width: 300px;
+            height: 500px;
+        }
+        @media (max-width: 768px) {
+            .card{
+            width: 100%;
+        } 
+        }
+    </style>
 </head>
   <body style="font-family: 'Source Sans Pro', sans-serif;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-   
+    <style>
+      section#content .slideshow-bg {
+          min-height: 270px;
+          padding: 0;
+          position: relative;
+          overflow: hidden;
+      }
+
+      #main {
+          padding-top: 70px;
+      }
+
+      .page-title,
+      .page-description {
+          color: #fff;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+      }
+
+      .page-title {
+          /**font-size: 4.1667em;**/
+          font-size: 30px;
+          font-weight: bold;
+      }
+
+      .page-description {
+          font-size: 2em;
+          margin-bottom: 40px;
+      }
+
+      .featured {
+          position: absolute;
+          right: 50px;
+          bottom: 50px;
+          z-index: 9;
+          margin-bottom: 0;
+          text-align: right;
+      }
+
+      .featured figure a {
+          border: 2px solid #fff;
+      }
+
+      .featured .details {
+          margin-right: 10px;
+      }
+
+      .featured .details>* {
+          color: #fff;
+          line-height: 1.25em;
+          margin: 0;
+          font-weight: bold;
+          text-shadow: 2px -2px rgba(0, 0, 0, 0.2);
+      }
+
+      section#content {
+          min-height: 300px
+      }
+
+      a h5.box-title {
+          color: #e3b7c8;
+      }
+
+      .more-popular-destinations ul.triangle li:before {
+          color: #c4c4c4;
+          top: -5px;
+          position: relative;
+      }
+
+      .more-popular-destinations ul {
+          border-right: 0px;
+      }
+
+      .icon-check:hover:after {
+          background-color: #ffdc01;
+      }
+
+      /**ul.search-tabs li { float: right; }**/
+      section#content {
+          background: #f5f5f5
+      }
+
+      .promo-box .m-title em {
+          font-size: 20px;
+          line-height: 10px;
+          font-style: normal;
+          font-weight: 500;
+      }
+
+      #footer {
+          margin-top: 0px;
+      }
+
+      @media (max-width: 768px) {
+          #main {
+              padding-top: 20px;
+          }
+
+          .page-title {
+              font-size: 2.1667em;
+              text-shadow: 0px 1px 2px #444;
+          }
+
+          .page-description {
+              font-size: 1.7em;
+              margin-bottom: 20px;
+              text-shadow: 0px 1px 2px #444;
+          }
+
+          .section {
+              padding-top: 30px;
+              padding-bottom: 30px;
+          }
+
+          .mobile-section .image-wrapper {
+              padding-top: 10px;
+          }
+      }
+
+      .font-alert {
+          font-size: 14px;
+          font-weight: 400;
+          color: rgb(37, 42, 49);
+          line-height: 22px;
+          text-align: left;
+      }
+
+      .modal-dialog-center {
+          margin-top: 10%;
+      }
+  </style>
 
   <div id="page-wrapper">
     <div id="root"></div>
