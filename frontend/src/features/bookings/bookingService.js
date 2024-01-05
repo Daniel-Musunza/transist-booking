@@ -2,14 +2,10 @@ import axios from 'axios'
 
 const API_URL = 'https://transist-api.onrender.com/api/bookings/'
 
-const addbooking = async (bookingData, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
+const addbooking = async (bookingData) => {
+ 
 
-  const response = await axios.post(API_URL , bookingData, config)
+  const response = await axios.post(API_URL , bookingData)
 
   return response.data
 }

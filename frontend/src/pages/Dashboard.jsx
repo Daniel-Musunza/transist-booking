@@ -134,8 +134,9 @@ const Dashboard = () => {
     console.log(formData);
     // Now you can dispatch your API call with the formData
     dispatch(addbooking(formData));
-
+    dispatch(fetchUsers());
     alert("Booked Successfully ...");
+    window.location.reload();
   };
 
   if (isLoading) {

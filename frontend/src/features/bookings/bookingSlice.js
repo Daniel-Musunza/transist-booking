@@ -33,8 +33,7 @@ export const addbooking = createAsyncThunk(
   'bookings/create',
   async (bookingData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await bookingService.addbooking(bookingData,token);
+      return await bookingService.addbooking(bookingData);
     } catch (error) {
       const message =
         (error.response &&

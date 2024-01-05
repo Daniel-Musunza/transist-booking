@@ -23,7 +23,6 @@ const addbooking = async (req, res) => {
       departure_date
     } = req.body;
 
-
     if (!id || !phone_number || !full_names || !secret_code) {
       res.status(400).json({ message: 'Please fill in all the required fields' });
       return;
@@ -35,18 +34,19 @@ const addbooking = async (req, res) => {
 
     const newSpace = user.space - space;
 
+    console.log(user.space + "-" + space + "=" + newSpace);
+    
     if(newSpace < 0 ){
       res.status(400).json({ message: 'Space Not enough. please book another truck' });
       return;
     }
-    
+
     const updateUserQuery = 'UPDATE users SET space = ? WHERE number_plate = ?'
     await db.query(updateUserQuery, [
         newSpace,
         number_plate
     ]);
    
-
     const received = null;
     const salt = await bcrypt.genSalt(10);
     const hashedSecretCode = await bcrypt.hash(secret_code, salt);
@@ -80,8 +80,6 @@ const addbooking = async (req, res) => {
       departure_date,
       received
     ]);
-
-  
 
     const newbooking = {
       id,
