@@ -29,6 +29,24 @@ const addbooking = async (req, res) => {
       return;
     }
 
+    const getUserQuery = 'SELECT * FROM users WHERE number_plate = ?';
+    const [user] = await db.query(getUserQuery, [number_plate]);
+
+
+    const newSpace = user.space - space;
+
+    if(newSpace < 0 ){
+      res.status(400).json({ message: 'Space Not enough. please book another truck' });
+      return;
+    }
+    
+    const updateUserQuery = 'UPDATE users SET space = ? WHERE number_plate = ?'
+    await db.query(updateUserQuery, [
+        newSpace,
+        number_plate
+    ]);
+   
+
     const received = null;
     const salt = await bcrypt.genSalt(10);
     const hashedSecretCode = await bcrypt.hash(secret_code, salt);
@@ -63,16 +81,7 @@ const addbooking = async (req, res) => {
       received
     ]);
 
-    const getUserQuery = 'SELECT * FROM users WHERE number_plate = ?';
-    const [user] = await db.query(getUserQuery, [number_plate]);
-    
-    const newSpace = user.space - space;
-
-    const updateUserQuery = 'UPDATE users SET space = ? WHERE number_plate = ?'
-    await db.query(updateUserQuery, [
-        newSpace,
-        number_plate
-    ]);
+  
 
     const newbooking = {
       id,
