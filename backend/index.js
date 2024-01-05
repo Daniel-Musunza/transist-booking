@@ -10,11 +10,10 @@ const port = process.env.PORT || 5000;
 dotenv.config();
 
 const app = express();
-
-
+// origin: 'http://localhost:3000',
+ 
 const corsOptions = {
   origin: 'https://transist-booking.vercel.app',
-  // origin: 'http://localhost:3000',
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
 };
 

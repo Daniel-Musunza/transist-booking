@@ -27,19 +27,7 @@ function Register() {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   )
-  const towns = [
-    { id: 1, town: "Mombasa" },
-    { id: 2, town: "Mariakani" },
-    { id: 3, town: "Voi" },
-    { id: 4, town: "Mtito Andei" },
-    { id: 5, town: "Kibwezi" },
-    { id: 6, town: "Emali" },
-    { id: 7, town: "Athi River" },
-    { id: 8, town: "Nairobi" },
-    { id: 9, town: "Nakuru" },
-    { id: 10, town: "Kericho" },
-    { id: 11, town: "Kisumu" }
-  ];
+
   
   
   useEffect(() => {

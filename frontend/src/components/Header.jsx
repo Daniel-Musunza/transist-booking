@@ -150,7 +150,7 @@ function Header() {
             {user && (
               <Link to="/bookings" >Bookings</Link>
             )}
-            <Link >Confirm Delivery</Link>
+            <Link onClick={toggleModal}>Confirm Delivery</Link>
           </div>
 
           <div className="right-data">
@@ -259,7 +259,6 @@ function Header() {
 
             </section>
           </div>
-
         </div>
       )}
     </section>

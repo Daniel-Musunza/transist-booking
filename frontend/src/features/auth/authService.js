@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API_URL = 'https://transist-api.onrender.com/api/users/'
-
+// https://transist-api.onrender.com
 const getUsers = async () => {
   const response = await axios.get(API_URL + 'getUsers/')
 

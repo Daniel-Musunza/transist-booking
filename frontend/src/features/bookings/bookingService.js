@@ -14,7 +14,7 @@ const addbooking = async (bookingData, token) => {
   return response.data
 }
 
-const getbookings = async (token) => {
+const getbookings = async () => {
     const response = await axios.get(API_URL)
 
   return response.data

@@ -27,9 +27,10 @@ const Dashboard = () => {
   ];
 
   let getTownName = (id) => {
-    const town = towns.find(t => t.id == id);
-    return town.town;
+    const newTown = towns.find(t => t.id == id);
+    return newTown ? newTown.town : "Unknown Town";
   };
+  
 
   const transistTypes = [
     { value: "any", label: "Any" },
@@ -415,7 +416,7 @@ const Dashboard = () => {
       </section>
       {showModal && (
         <div className="booking-modal">
-          <div className="booking-container" style={{ background: '#fff', padding: '10px', borderRadius: '5px' }}>
+          <div className="booking-container" style={{ background: '#fff', padding: '10px', borderRadius: '5px', height: '80vh', overFlow: 'scroll' }}>
             <section className='heading' >
 
               <h1>

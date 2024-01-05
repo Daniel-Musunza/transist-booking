@@ -29,6 +29,7 @@ const addbooking = async (req, res) => {
       return;
     }
 
+    const received = null;
     const salt = await bcrypt.genSalt(10);
     const hashedSecretCode = await bcrypt.hash(secret_code, salt);
     // Insert the file data into the database
