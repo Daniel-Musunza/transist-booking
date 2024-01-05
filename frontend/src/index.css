@@ -49,6 +49,10 @@ article{
       display: flex;
       flex-wrap: wrap;
     }
+    .booking-container{
+        display: flex;
+        flex-wrap: wrap;
+      }
     .bookings-table {
         display: none;
     }

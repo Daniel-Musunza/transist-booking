@@ -19,10 +19,35 @@ const getbookings = async (token) => {
 
   return response.data
 }
+const searchMyBooking = async (userData) => {
+  const response = await axios.post(API_URL + 'searchMyBooking', userData)
 
+  if (response.data) {
+    localStorage.setItem('user', JSON.stringify(response.data))
+  }
+
+  return response.data
+}
+const confirmReceived = async (userData, userId) => {
+
+
+  const response = await axios.put(API_URL + 'received/' + userId, userData)
+
+  return response.data
+}
+const confirmNotReceived = async (userData, userId) => {
+
+
+  const response = await axios.put(API_URL + 'notReceived/' + userId, userData)
+
+  return response.data
+}
 const bookingService = {
   getbookings,
-  addbooking
+  addbooking,
+  searchMyBooking,
+  confirmReceived,
+  confirmNotReceived
 }
 
 

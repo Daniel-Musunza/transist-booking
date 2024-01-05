@@ -122,7 +122,6 @@ const loginUser = asyncHandler(async (req, res) => {
       });
     } else {
       res.status(400).json({ message: 'Invalid credentials' });
-      throw new Error('Invalid credentials');
     }
   } catch (error) {
     console.error(error);
@@ -200,7 +199,7 @@ const updateUser = asyncHandler(async (req, res) => {
         coverPhoto,
         hashedPassword,
          id
-        ]);
+    ]);
 
     res.json({ message: 'User updated successfully' });
   } catch (error) {

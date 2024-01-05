@@ -63,6 +63,7 @@ const Dashboard = () => {
   const [full_names, setFullNames] = useState('');
   const [id, setID] = useState('');
   const [phone_number, setPhoneNumber] = useState('');
+  const [secret_code, setSecretCode] = useState('');
 
   const [showModal, setShowModal] = useState(false);
 
@@ -87,27 +88,27 @@ const Dashboard = () => {
 
   async function Search(event) {
     event.preventDefault();
-  
+
     const newSearchResults = users.filter((vehicle) => {
-      
-        if((vehicle.transist_type == transist_type) || (transist_type == 'any')){
-          if(vehicle.departure_date == departure_date){
-            if(vehicle.space >= space){
-              if(((vehicle.from <= from) && (vehicle.to >= to)) || ((vehicle.from >= from) && (vehicle.to <= to))){
-                return vehicle
-              }
+
+      if ((vehicle.transist_type == transist_type) || (transist_type == 'any')) {
+        if (vehicle.departure_date == departure_date) {
+          if (vehicle.space >= space) {
+            if(((vehicle.from <= from) && (vehicle.to >= to)) || ((vehicle.from >= from) && (vehicle.to <= to))){
+            return vehicle
             }
           }
         }
-    
+      }
+
     });
 
-    
-  
+
+
     // Set the search results state
     setSearchResults(newSearchResults);
   }
-  
+
 
   const handleBooking = async (e, selectedTransist) => {
     e.preventDefault();
@@ -119,6 +120,7 @@ const Dashboard = () => {
     const formData = {
       id,
       phone_number,
+      secret_code,
       full_names,
       space,
       from,
@@ -237,34 +239,34 @@ const Dashboard = () => {
                   </div>
                   <div className="col-md-3 changetype">
                     <div className="form-group row" >
-                    <div className="col-md-12 col-xs-12">
-                          <label style={{ color: 'white' }}>Space - In Square Meters</label>
-                          <input
-                            type="number"
-                            required={true}
-                            className="form-control"
-                            placeholder="1"
-                            min="1"
-                            value={space}
-                            onChange={(e) => setSpace(e.target.value)}
-                          />
-                    </div>
+                      <div className="col-md-12 col-xs-12">
+                        <label style={{ color: 'white' }}>Space - In Square Meters</label>
+                        <input
+                          type="number"
+                          required={true}
+                          className="form-control"
+                          placeholder="1"
+                          min="1"
+                          value={space}
+                          onChange={(e) => setSpace(e.target.value)}
+                        />
+                      </div>
                     </div>
                   </div>
                   <div className="col-md-3 changetype">
                     <div className="form-group row" >
-                    <div className="col-md-12 col-xs-12">
-                          <label style={{ color: 'white' }}>Departure Date</label>
-                          <input
-                            type="date"
-                            required={true}
-                            className="form-control"
-                            placeholder="mm/dd/yyyy"
-                            value={departure_date}
-                            id="date"
-                            name="date"
-                            onChange={(e) => setDepartureDate(e.target.value)}
-                          />
+                      <div className="col-md-12 col-xs-12">
+                        <label style={{ color: 'white' }}>Departure Date</label>
+                        <input
+                          type="date"
+                          required={true}
+                          className="form-control"
+                          placeholder="mm/dd/yyyy"
+                          value={departure_date}
+                          id="date"
+                          name="date"
+                          onChange={(e) => setDepartureDate(e.target.value)}
+                        />
                       </div>
                     </div>
                   </div>
@@ -324,7 +326,7 @@ const Dashboard = () => {
 
                     <div className="intro box table-wrapper full-width hidden-table-sms">
                       <div className="row image-box style3">
-                        {users.map((transist) => (
+                        {searchResults.map((transist) => (
                           <div className="col-sm-6 col-md-6 card" key={transist.id}>
                             <article className="box">
                               <figure>
@@ -367,7 +369,50 @@ const Dashboard = () => {
       ) : (
         <></>
       )}
+      <section id="content" className="gray-area">
+        <h1 style={{textAlign: 'center'}}>All Trucks</h1>
+        <div className="container car-detail-page">
+          <div className="row">
+            <div className="col-sm-12 col-md-12">
+              <div id="form-tags">
 
+                <div className="intro box table-wrapper full-width hidden-table-sms">
+                  <div className="row image-box style3">
+                    {users.map((transist) => (
+                      <div className="col-sm-6 col-md-6 card" key={transist.id}>
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src={`/uploads/${transist.coverPhoto}`} />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                              {getTownName(transist.from)} to {getTownName(transist.to)}
+                            </h4>
+                            <ul className="filters-option" style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+                              <li><a href="#"><span style={{ fontWeight: 600 }}>Vehicle Number Plate:</span> {transist.number_plate}</a></li>
+                              <li><a href="#"><span style={{ fontWeight: 600 }}>Truck Type:</span> {getTransistType(transist.transist_type)}</a></li>
+                              <li><a href="#"><span style={{ fontWeight: 600 }}>Departure Date:</span> {transist.departure_date}</a></li>
+                              {/* <li><a href="#"><span style={{ fontWeight: 600 }}>Time in Mombasa:</span> 8:00 am</a></li> */}
+                              <li><a href="#"><span style={{ fontWeight: 600 }}>Space Available:</span> {transist.space} Square Meters</a></li>
+                            </ul>
+                            <p className="description"></p>
+                            <button className="full-width btn-small" type="submit" onClick={() => toggleModal(transist.id)}>
+                              Book this Transist
+                            </button>
+                          </div>
+                        </article>
+                      </div>
+                    ))}
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {showModal && (
         <div className="booking-modal">
           <div className="booking-container" style={{ background: '#fff', padding: '10px', borderRadius: '5px' }}>
@@ -445,7 +490,17 @@ const Dashboard = () => {
                     onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
-
+                <div className='form-group'>
+                  <input
+                    type='password'
+                    className='form-control'
+                    id='secret_code'
+                    name='secret_code'
+                    placeholder='Enter delivery Confirmation Code'
+                    value={secret_code}
+                    onChange={(e) => setSecretCode(e.target.value)}
+                  />
+                </div>
                 <div className='form-group'>
                   <button type='submit' className='btn btn-block' onClick={(e) => handleBooking(e, selectedTransist)}>
                     Book Now
