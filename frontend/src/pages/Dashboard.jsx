@@ -119,7 +119,7 @@ const Dashboard = () => {
     const number_plate = selectedTransist.number_plate;
     const departure_date = selectedTransist.departure_date;
     const formData = {
-      id,
+      national_id: id,
       phone_number,
       secret_code,
       full_names,
@@ -142,6 +142,7 @@ const Dashboard = () => {
   if (isLoading) {
     return <Spinner />
   }
+
   return (
     <div>
       <section id="content"
@@ -165,7 +166,7 @@ const Dashboard = () => {
                     <div className="form-group row">
                       <div className="col-md-12 visible-xs">&nbsp;</div>
                       <div className="col-md-12 col-xs-12">
-                        <label style={{ color: 'white' }}>Transist Type</label>
+                        <label style={{ color: 'white'}}>Transist Type </label>
                         <select className="form-control schedule_type" id="train_type"
                           name="schedule_type"
                           value={transist_type}
@@ -243,6 +244,7 @@ const Dashboard = () => {
                     <div className="form-group row" >
                       <div className="col-md-12 col-xs-12">
                         <label style={{ color: 'white' }}>Space - In Square Meters</label>
+                        {/* {meters} */}
                         <input
                           type="number"
                           required={true}
@@ -252,6 +254,13 @@ const Dashboard = () => {
                           value={space}
                           onChange={(e) => setSpace(e.target.value)}
                         />
+
+                        {/* <select name="select_option" id="" onChange={(e) => setSpaceType(e.target.value)}>
+                          <option value="">Select Size</option>
+                          <option value="meters">Write Square Meters</option>
+                          <option value="full">Full Track</option>
+                          <option value="half">Half track</option>
+                        </select> */}
                       </div>
                     </div>
                   </div>
@@ -371,8 +380,58 @@ const Dashboard = () => {
       ) : (
         <></>
       )}
+
+      {users.find((transist) => transist.transist_type == transist_type) ? (
+        <section id="content" className="gray-area">
+          <div className="container car-detail-page">
+            <div className="row">
+              <div className="col-sm-12 col-md-12">
+                <div id="form-tags">
+
+                  <div className="intro box table-wrapper full-width hidden-table-sms">
+                    <div className="row image-box style3">
+                      {users
+                      .filter((transist) => transist.transist_type == transist_type)
+                      .map((transist) => (
+                        <div className="col-sm-6 col-md-6 card" key={transist.id}>
+                          <article className="box">
+                            <figure>
+                              <img width="270" height="160" alt="" src={`/uploads/${transist.coverPhoto}`} />
+                            </figure>
+                            <div className="details text-center">
+                              <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                                {getTownName(transist.from)} to {getTownName(transist.to)}
+                              </h4>
+                              <ul className="filters-option" style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+                                <li><a href="#"><span style={{ fontWeight: 600 }}>Vehicle Number Plate:</span> {transist.number_plate}</a></li>
+                                <li><a href="#"><span style={{ fontWeight: 600 }}>Truck Type:</span> {getTransistType(transist.transist_type)}</a></li>
+                                <li><a href="#"><span style={{ fontWeight: 600 }}>Departure Date:</span> {transist.departure_date}</a></li>
+                                {/* <li><a href="#"><span style={{ fontWeight: 600 }}>Time in Mombasa:</span> 8:00 am</a></li> */}
+                                <li><a href="#"><span style={{ fontWeight: 600 }}>Space Available:</span> {transist.space} Square Meters</a></li>
+                              </ul>
+                              <p className="description"></p>
+                              <button className="full-width btn-small" type="submit" onClick={() => toggleModal(transist.id)}>
+                                Book this Transist
+                              </button>
+                            </div>
+                          </article>
+                        </div>
+                      ))}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </section>
+      ):(
       <section id="content" className="gray-area">
-        <h1 style={{textAlign: 'center'}}>All Trucks</h1>
+        <h1 style={{textAlign: 'center'}}>Truck Categories</h1>
         <div className="container car-detail-page">
           <div className="row">
             <div className="col-sm-12 col-md-12">
@@ -380,34 +439,150 @@ const Dashboard = () => {
 
                 <div className="intro box table-wrapper full-width hidden-table-sms">
                   <div className="row image-box style3">
-                    {users.map((transist) => (
-                      <div className="col-sm-6 col-md-6 card" key={transist.id}>
+                      <div className="col-sm-6 col-md-6 card">
                         <article className="box">
                           <figure>
-                            <img width="270" height="160" alt="" src={`/uploads/${transist.coverPhoto}`} />
+                            <img width="270" height="160" alt="" src="images/rigid.jfif" />
                           </figure>
                           <div className="details text-center">
                             <h4 className="box-title" style={{ paddingBottom: '10px' }}>
-                              {getTownName(transist.from)} to {getTownName(transist.to)}
+                              Rigid Truck
                             </h4>
-                            <ul className="filters-option" style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-                              <li><a href="#"><span style={{ fontWeight: 600 }}>Vehicle Number Plate:</span> {transist.number_plate}</a></li>
-                              <li><a href="#"><span style={{ fontWeight: 600 }}>Truck Type:</span> {getTransistType(transist.transist_type)}</a></li>
-                              <li><a href="#"><span style={{ fontWeight: 600 }}>Departure Date:</span> {transist.departure_date}</a></li>
-                              {/* <li><a href="#"><span style={{ fontWeight: 600 }}>Time in Mombasa:</span> 8:00 am</a></li> */}
-                              <li><a href="#"><span style={{ fontWeight: 600 }}>Space Available:</span> {transist.space} Square Meters</a></li>
-                            </ul>
-                            <p className="description"></p>
-                            <button className="full-width btn-small" type="submit" onClick={() => toggleModal(transist.id)}>
-                              Book this Transist
-                            </button>
+                            <p className="description">Single-unit trucks with a fixed cargo area. They are commonly used for local deliveries and come in various sizes.</p>
                           </div>
                         </article>
                       </div>
-                    ))}
-
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/articulated.jpg" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                            Articulated Truck
+                            </h4>
+                            <p className="description">Consist of a tractor unit (front part) and a trailer unit (rear part) connected by a fifth wheel. Also known as tractor-trailers or semitrucks, they are used for long-haul transportation</p>
+                          </div>
+                        </article>
+                      </div>
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/boxLorry.jpg" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                              Box Lorry
+                            </h4>
+                            <p className="description">Lorries with an enclosed cargo area, suitable for transporting goods that need protection from the weather.</p>
+                          </div>
+                        </article>
+                      </div>
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/flat_bed.jpg" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                            Flatbed Lorry
+                            </h4>
+                            <p className="description">Lorries with a flat cargo bed and no sides, allowing for easy loading and unloading of large or heavy items.</p>
+                          </div>
+                        </article>
+                      </div>
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/tipper.jfif" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                            Tipper Lorry
+                            </h4>
+                            <p className="description">Equipped with a hydraulic system to tilt the cargo bed, facilitating the unloading of loose materials like sand, gravel, or construction debris.</p>
+                          </div>
+                        </article>
+                      </div>
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/refregerated.jfif" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                            Refregerated Lorry
+                            </h4>
+                            <p className="description">Lorries with a refrigeration unit for transporting temperature-sensitive goods, such as perishable food items.</p>
+                          </div>
+                        </article>
+                      </div>
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/curtain_side.jfif" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                            Curtain-Side Lorry
+                            </h4>
+                            <p className="description">Lorries with a flexible curtain instead of solid sides, providing easy access to the cargo from the sides.</p>
+                          </div>
+                        </article>
+                      </div>
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/low_loader.jpg" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                            Low-Loader Lorry
+                            </h4>
+                            <p className="description">Lorries with a lower cargo deck, designed for transporting heavy or oversized loads, such as machinery or construction equipment.</p>
+                          </div>
+                        </article>
+                      </div>
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/car_transporter.jpg" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                            Car Transporter
+                            </h4>
+                            <p className="description">Lorries specifically designed for transporting multiple cars, often used by car manufacturers or dealerships.</p>
+                          </div>
+                        </article>
+                      </div>
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/skipp.jfif" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                            Skipp Homes
+                            </h4>
+                            <p className="description">Equipped with a hydraulic arm to lift and place skip containers, commonly used for waste disposal.</p>
+                          </div>
+                        </article>
+                      </div>
+                      <div className="col-sm-6 col-md-6 card">
+                        <article className="box">
+                          <figure>
+                            <img width="270" height="160" alt="" src="images/livestock.jfif" />
+                          </figure>
+                          <div className="details text-center">
+                            <h4 className="box-title" style={{ paddingBottom: '10px' }}>
+                            Livestock Lorry
+                            </h4>
+                            <p className="description">Designed for transporting animals, with features to ensure the safety and well-being of the livestock during transit.</p>
+                          </div>
+                        </article>
+                      </div>
                   </div>
-
                 </div>
 
               </div>
@@ -415,6 +590,9 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
+      )}
+      
+
       {showModal && (
         <div className="booking-modal">
           <div className="booking-container" style={{ background: '#fff', padding: '10px', borderRadius: '5px', height: '80vh', overFlow: 'scroll' }}>
@@ -498,7 +676,7 @@ const Dashboard = () => {
                     className='form-control'
                     id='secret_code'
                     name='secret_code'
-                    placeholder='Enter delivery Confirmation Code'
+                    placeholder='Enter Your Secret Code'
                     value={secret_code}
                     onChange={(e) => setSecretCode(e.target.value)}
                   />

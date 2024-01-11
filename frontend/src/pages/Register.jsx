@@ -87,7 +87,7 @@ function Register() {
         {/* ... */}
         <div className='form-group'>
          
-          <label >Transist Type</label>
+        <label style={{ display: 'flex', height: '20px' }}>Transist Type <span style={{marginLeft: '10px', cursor: 'pointer', color: 'green', textTransform: 'none' }}>Learn More</span></label>
                         <select 
                         className="form-control schedule_type"
                          id="transist_type"
@@ -95,7 +95,6 @@ function Register() {
                           value={transist_type}
                           onChange={(e) => setTransistType(e.target.value)}>
                           <option value="" selected>Select....</option>
-                          <option value="any">Any</option>
                           <option value="rigid">Rigid Truck</option>
                           <option value="articulated">Articulated Truck</option>
                           <option value="box">Box Lorry</option>

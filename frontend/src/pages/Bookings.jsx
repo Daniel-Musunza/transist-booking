@@ -85,7 +85,8 @@ function Bookings() {
           <div key={booking.id} className="booking-card">
             <div className="card-header">Booking ID: {booking.id}</div>
             <div className="card-content">
-              <p>User Name: {booking.full_names}</p>
+              <p>Client's Name: {booking.full_names}</p>
+              <p>Client's National ID: {booking.national_id}</p>
               <p>Phone Number: {booking.phone_number}</p>
               <p>From: {getTownName(booking.from)}</p>
               <p>To: {getTownName(booking.to)}</p>
@@ -102,7 +103,8 @@ function Bookings() {
         <thead>
           <tr>
             <th>Booking ID</th>
-            <th>User Name</th>
+            <th>Client's Name</th>
+            <th>Client's National ID</th>
             <th>Phone Number</th>
             <th>From</th>
             <th>To</th>
@@ -118,6 +120,7 @@ function Bookings() {
             <tr key={booking.id}>
               <td>{booking.id}</td>
               <td>{booking.full_names}</td>
+              <td>{booking.national_id}</td>
               <td>{booking.phone_number}</td>
               <td>{getTownName(booking.from)}</td>
               <td>{getTownName(booking.to)}</td>

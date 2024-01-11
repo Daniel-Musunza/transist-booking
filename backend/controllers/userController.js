@@ -81,6 +81,8 @@ const registerUser = asyncHandler(async (req, res) => {
         coverPhoto : coverPhoto,
         token,
       });
+
+      
     } else {
       res.status(400).json({ message: 'Invalid user data' });
       throw new Error('Invalid user data');

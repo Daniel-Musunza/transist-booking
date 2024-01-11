@@ -2,6 +2,24 @@ const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const db = require('../config/db');
 
+const accountSid = process.env.ACCOUNT_SID;
+const authToken = process.env.AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+
+const sendSMS = async (phoneNumber, bookingDetails) => {
+  try {
+    const message = await client.messages.create({
+      body: `Booking Details:\nBooking ID: ${bookingDetails.id}\nFrom: ${bookingDetails.from}\nTo: ${bookingDetails.to}\nAmount: ${bookingDetails.amount}`,
+      from: '+254794711950',
+      to: phoneNumber
+    });
+
+    console.log(`Message sent with SID: ${message.sid}`);
+  } catch (error) {
+    console.error(`Error sending SMS: ${error.message}`);
+  }
+};
+
 const getbookings = asyncHandler(async (req, res) => {
   const query = 'SELECT * FROM bookings';
   const bookings = await db.query(query);
@@ -11,7 +29,7 @@ const getbookings = asyncHandler(async (req, res) => {
 const addbooking = async (req, res) => {
   try {
     const {
-      id,
+      national_id,
       phone_number,
       secret_code,
       full_names,
@@ -23,7 +41,7 @@ const addbooking = async (req, res) => {
       departure_date
     } = req.body;
 
-    if (!id || !phone_number || !full_names || !secret_code) {
+    if (!national_id || !phone_number || !full_names || !secret_code) {
       res.status(400).json({ message: 'Please fill in all the required fields' });
       return;
     }
@@ -40,12 +58,6 @@ const addbooking = async (req, res) => {
       res.status(400).json({ message: 'Space Not enough. please book another truck' });
       return;
     }
-
-    const updateUserQuery = 'UPDATE users SET space = ? WHERE number_plate = ?'
-    await db.query(updateUserQuery, [
-        newSpace,
-        number_plate
-    ]);
    
     const received = null;
     const salt = await bcrypt.genSalt(10);
@@ -53,7 +65,7 @@ const addbooking = async (req, res) => {
     // Insert the file data into the database
     const insertbookingQuery = `
       INSERT INTO bookings (
-        id,
+        national_id,
         phone_number,
         secret_code,
         full_names,
@@ -67,8 +79,8 @@ const addbooking = async (req, res) => {
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
-    await db.query(insertbookingQuery, [
-      id,
+   const result = await db.query(insertbookingQuery, [
+      national_id,
       phone_number,
       hashedSecretCode,
       full_names,
@@ -81,25 +93,37 @@ const addbooking = async (req, res) => {
       received
     ]);
 
-    const newbooking = {
-      id,
-      phone_number,
-      full_names,
-      space,
-      from,
-      to,
-      amount,
-      number_plate,
-      departure_date,
-      received
-    };
+    if (result.affectedRows === 1) {
+      const newId = result.insertId;
+      const newbooking = {
+        id : newId,
+        national_id,
+        phone_number,
+        full_names,
+        space,
+        from,
+        to,
+        amount,
+        number_plate,
+        departure_date,
+        received
+      };
 
-    res.status(200).json(newbooking);
+      await sendSMS(phone_number, newbooking);
+
+      const updateUserQuery = 'UPDATE users SET space = ? WHERE number_plate = ?'
+      await db.query(updateUserQuery, [
+          newSpace,
+          number_plate
+      ]);
+      res.status(200).json(newbooking);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });
   }
 };
+
 const searchMyBooking = asyncHandler(async (req, res) => {
   try {
     const { id, secret_code } = req.body;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
+import VehicleTracking from './VehicleTracking';
 import { searchMyBooking, setMyBooking, confirmReceived, confirmNotReceived } from '../features/bookings/bookingSlice'
 
 function Header() {
@@ -121,7 +122,7 @@ function Header() {
           {user && (
             <Link to="/bookings">Bookings</Link>
           )}
-          <Link onClick={toggleModal}>Confirm Delivery</Link>
+          <Link onClick={toggleModal}>Track Order</Link>
         </div>
 
         <div className="right-data">
@@ -133,7 +134,7 @@ function Header() {
           ) : (
             <>
               <button> <Link to="/login"> Log In</Link></button>
-              <button> <Link to="/register"> Register</Link></button>
+              {/* <button> <Link to="/register"> Register</Link></button> */}
             </>
 
           )}
@@ -150,7 +151,7 @@ function Header() {
             {user && (
               <Link to="/bookings" >Bookings</Link>
             )}
-            <Link onClick={toggleModal}>Confirm Delivery</Link>
+            <Link onClick={toggleModal}>Track Order</Link>
           </div>
 
           <div className="right-data">
@@ -162,7 +163,7 @@ function Header() {
             ) : (
               <>
                 <button> <Link to="/login"> Log In</Link></button>
-                <button> <Link to="/register"> Register</Link></button>
+                {/* <button> <Link to="/register"> Register</Link></button> */}
               </>
 
             )}
@@ -173,11 +174,11 @@ function Header() {
       {showModal && (
         <div className="booking-modal">
           <div className="booking-container" style={{ background: '#fff', padding: '10px', borderRadius: '5px' }}>
-            <section className='heading' >
+          <section className='heading'>
 
-              <h1>
-                Delivery Confirmation
-              </h1>
+            <h2>
+              Track Order
+            </h2>
             </section>
             <button
               onClick={closeModal}
@@ -193,47 +194,19 @@ function Header() {
               Close
             </button>
             <section className='form'>
-              <form onSubmit={handleSearch}>
-                <div className='form-group'>
-                  <input
-                    type='text'
-                    className='form-control'
-                    id='id_number'
-                    name='id_number'
-                    placeholder='National ID Number'
-                    value={id}
-                    onChange={(e) => setID(e.target.value)}
-                  />
-                </div>
-                <div className='form-group'>
-                  <input
-                    type='password'
-                    className='form-control'
-                    id='secret_code'
-                    name='secret_code'
-                    placeholder='Enter delivery Confirmation Code'
-                    value={secret_code}
-                    onChange={(e) => setSecretCode(e.target.value)}
-                  />
-                </div>
-                <div className='form-group'>
-                  <button type='submit' className='btn btn-block'>
-                    Search
-                  </button>
-                </div>
-
-              </form>
-              {myBooking && (
-                <div className="bookings">
+           
+              {myBooking ? (
+                <div className="">
                   {/* Display cards for small screens */}
-                  <div className="booking-container">
-                    <div key={myBooking.id} className="booking-card">
-                      <div className="card-header">Booking ID: {myBooking.id}</div>
-                      <div className="card-content">
+                  <div className="">
+                    <div key={myBooking.id} className="">
+                      <div className="">Booking ID: {myBooking.id}</div>
+                      <div className="info" style={{margin: 'auto' }}>
                         <p>From: {getTownName(myBooking.from)}</p>
                         <p>To: {getTownName(myBooking.to)}</p>
                         <p>Space in Square Meters: {myBooking.space}</p>
                         <p>Amount: {myBooking.amount}</p>
+                        <h3>Delivery Confirmation</h3>
                         {myBooking.received === 1 ? (
                           <p> Status: Received</p>
                         ) : myBooking.received === 0 ? (
@@ -246,15 +219,46 @@ function Header() {
                           
                             <button onClick={handleConfirmReceived} style={{marginRight: '10px', borderRadius: '10px'}}>Received</button>
                             <button onClick={handleConfirmNotReceived} style={{marginRight: '10px', borderRadius: '10px'}}>Not Received</button>
-                            <p>Status: Unknown</p>
+                            <p>Delivery Status: Unknown</p>
                           </>
                         )}
                       </div>
                     </div>
                   </div>
-
-
+                  <h3>Real Time Location</h3>
+                  <VehicleTracking />
                 </div>
+              ): (
+              <form onSubmit={handleSearch}>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='id_number'
+                    name='id_number'
+                    placeholder='Your Booking ID'
+                    value={id}
+                    onChange={(e) => setID(e.target.value)}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='password'
+                    className='form-control'
+                    id='secret_code'
+                    name='secret_code'
+                    placeholder='Secret Code'
+                    value={secret_code}
+                    onChange={(e) => setSecretCode(e.target.value)}
+                  />
+                </div>
+                <div className='form-group'>
+                  <button type='submit' className='btn btn-block'>
+                    Search
+                  </button>
+                </div>
+
+              </form>
               )}
 
             </section>
