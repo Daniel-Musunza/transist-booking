@@ -20,7 +20,7 @@ const options = {
   zoomControl: true,
 };
 
-const VehicleTracking = () => {
+const VehicleTracking = ({numberPlate}) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,
@@ -37,7 +37,8 @@ const VehicleTracking = () => {
         });
       },
       (error) => console.error(error),
-      { enableHighAccuracy: true, maximumAge: 1000, timeout: 5000 }
+      { enableHighAccuracy: true, maximumAge: 1000, timeout: 5000 },
+      console.log(numberPlate)
     );
 
     return () => {
@@ -49,6 +50,8 @@ const VehicleTracking = () => {
   if (!isLoaded) return 'Loading Maps';
 
   return (
+    <>
+    <h1>{numberPlate}</h1>
     <GoogleMap
       mapContainerStyle={mapContainerStyle}
       zoom={15}
@@ -57,6 +60,7 @@ const VehicleTracking = () => {
     >
       <Marker position={position} />
     </GoogleMap>
+    </>
   );
 };
 

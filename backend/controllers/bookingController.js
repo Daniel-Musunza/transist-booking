@@ -142,6 +142,7 @@ const searchMyBooking = asyncHandler(async (req, res) => {
       res.json({
         id: myBooking.id,
         from: myBooking.from,
+        number_plate: myBooking.number_plate,
         to: myBooking.to,
         amount: myBooking.amount,
         space: myBooking.space,

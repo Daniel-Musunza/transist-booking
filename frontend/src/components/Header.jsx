@@ -15,6 +15,12 @@ function Header() {
   const { myBooking, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.bookings
   );
+
+  let numberPlate;
+  if(myBooking){
+    numberPlate = myBooking.number_plate;
+  }
+
   const [showModal, setShowModal] = useState(false);
   const [id, setID] = useState('');
   const [secret_code, setSecretCode] = useState('');
@@ -206,7 +212,7 @@ function Header() {
                         <p>To: {getTownName(myBooking.to)}</p>
                         <p>Space in Square Meters: {myBooking.space}</p>
                         <p>Amount: {myBooking.amount}</p>
-                        <h3>Delivery Confirmation</h3>
+                        <h3>Delivery Confirmation </h3>
                         {myBooking.received === 1 ? (
                           <p> Status: Received</p>
                         ) : myBooking.received === 0 ? (
@@ -225,8 +231,8 @@ function Header() {
                       </div>
                     </div>
                   </div>
-                  <h3>Real Time Location</h3>
-                  <VehicleTracking />
+                  <h3>Real Time Location for Truck <span style={{color: 'black'}}>{myBooking.number_plate}</span></h3>
+                  <VehicleTracking {...numberPlate}/>
                 </div>
               ): (
               <form onSubmit={handleSearch}>
