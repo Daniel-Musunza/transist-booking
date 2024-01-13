@@ -439,7 +439,7 @@ const Dashboard = () => {
 
                 <div className="intro box table-wrapper full-width hidden-table-sms">
                   <div className="row image-box style3">
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('rigid')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/rigid.jfif" />
@@ -452,7 +452,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('articulated')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/articulated.jpg" />
@@ -465,7 +465,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('box')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/boxLorry.jpg" />
@@ -478,7 +478,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('flatbed')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/flat_bed.jpg" />
@@ -491,7 +491,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('tipper')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/tipper.jfif" />
@@ -504,7 +504,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('refregerated')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/refregerated.jfif" />
@@ -517,7 +517,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('curtain-side')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/curtain_side.jfif" />
@@ -530,7 +530,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('low-loader')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/low_loader.jpg" />
@@ -543,7 +543,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('car')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/car_transporter.jpg" />
@@ -556,7 +556,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('skipp')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/skipp.jfif" />
@@ -569,7 +569,7 @@ const Dashboard = () => {
                           </div>
                         </article>
                       </div>
-                      <div className="col-sm-6 col-md-6 card">
+                      <div className="col-sm-6 col-md-6 card" onClick={(e) => setTransistType('livestock')}>
                         <article className="box">
                           <figure>
                             <img width="270" height="160" alt="" src="images/livestock.jfif" />
