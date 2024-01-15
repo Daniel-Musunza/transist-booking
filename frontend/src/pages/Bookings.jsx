@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import Spinner from '../components/Spinner'
 import {useNavigate } from 'react-router-dom'
 import { getbookings } from '../features/bookings/bookingSlice'
+import Header from '../components/Header'
 
 function Bookings() {
   const navigate = useNavigate()
@@ -74,6 +75,8 @@ function Bookings() {
   }
 
   return (
+    <>
+    <Header />
     <div className="bookings-container">
     <div className="heading">Bookings</div>
     <div className="bookings">
@@ -133,6 +136,8 @@ function Bookings() {
       </table>
     </div>
   </div>
+    </>
+    
    
   )
 }

@@ -4,10 +4,12 @@ const colors = require('colors');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const { errorHandler } = require('./middleware/errorMiddleware');
-const db = require('./config/db'); // Import your MySQL db connection setup
-const port = process.env.PORT || 5000;
+const db = require('./config/db');
+dotenv.config(); // Import your MySQL db connection setup
+const port = process.env.PORT;
+console.log('port',port);
 
-dotenv.config();
+
 
 const app = express();
 
@@ -18,7 +20,7 @@ const corsOptions = {
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

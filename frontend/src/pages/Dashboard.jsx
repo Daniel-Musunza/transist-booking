@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { reset, fetchUsers } from '../features/auth/authSlice'
 import { addbooking } from '../features/bookings/bookingSlice'
 import Spinner from '../components/Spinner'
+import Header from '../components/Header';
 const Dashboard = () => {
 
 
@@ -144,6 +145,8 @@ const Dashboard = () => {
   }
 
   return (
+    <>
+    <Header/>
     <div>
       <section id="content"
         style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: 'center', minHeight: 'auto', paddingBottom: '20px', paddingTop: '20px' }}>
@@ -696,6 +699,8 @@ const Dashboard = () => {
 
 
     </div>
+    </>
+    
   );
 };
 

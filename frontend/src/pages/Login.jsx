@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 import {useNavigate } from 'react-router-dom'
+import Header from '../components/Header'
 
 function Login() {
   const [number_plate, setNumberPlate] = useState('');
@@ -47,6 +48,8 @@ function Login() {
   }
 
   return (
+    <>
+    <Header/>
     <div className="register">
       
 
@@ -90,6 +93,8 @@ function Login() {
         </form>
       </section>
     </div>
+    </>
+    
    
   )
 }

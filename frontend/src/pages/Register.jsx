@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { FaUser } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { FaUser } from 'react-icons/fa'
-import { register, reset } from '../features/auth/authSlice'
+import Header from '../components/Header'
 import Spinner from '../components/Spinner'
+import { register, reset } from '../features/auth/authSlice'
 
 function Register() {
   const [transist_type, setTransistType] = useState('');
@@ -74,6 +75,8 @@ function Register() {
   }
 
   return (
+    <>
+    <Header />
     <div className="register">
       
       <section className='heading'>
@@ -250,6 +253,8 @@ function Register() {
       </form>
     </section>
     </div>
+    </>
+    
   )
 }
 

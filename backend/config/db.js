@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
   port: process.env.DB_PORT,
   timeout: 60000,
 });
-
+console.log(process.env.HOST);
 connection.connect((err) => {
   if (err) {
     console.log(err.message);
