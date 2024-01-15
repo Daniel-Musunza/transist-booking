@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { reset, fetchUsers } from '../features/auth/authSlice'
-import { addbooking } from '../features/bookings/bookingSlice'
-import Spinner from '../components/Spinner'
-import Header from '../components/Header';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Spinner from '../components/Spinner';
+import { fetchUsers, reset } from '../features/auth/authSlice';
+import { addbooking } from '../features/bookings/bookingSlice';
 const Dashboard = () => {
 
 
@@ -146,7 +145,6 @@ const Dashboard = () => {
 
   return (
     <>
-    <Header/>
     <div>
       <section id="content"
         style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: 'center', minHeight: 'auto', paddingBottom: '20px', paddingTop: '20px' }}>

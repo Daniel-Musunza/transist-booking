@@ -9,20 +9,12 @@ const DashHeader = () => {
                 <h2 className='text-[20px] font-[700]'>Truck Dashboard</h2>
             </div>
             <div className="flex justify-center gap-[50px] items-center">
-                <Link to='' className=' text-[18px] text-dark hover:text-lightBlue font-[500]'>Home</Link>
-                <Link to='test' className=' text-[18px] text-dark hover:text-lightBlue font-[500]'>Test</Link>
-                <Link to='truckTypes' className=' text-[18px] text-dark hover:text-lightBlue font-[500]'>
-                    Truck Type
-                </Link>
-                <Link to='stations' 
-                className=' text-[18px] text-dark hover:text-lightBlue font-[500]'>
-                    Add Route
-                </Link>
-                <Link to='addTruck' className=' text-[18px] text-dark hover:text-lightBlue font-[500]'>
-                    Add Truck
-                </Link>
+                <Link to='/' className=' text-[18px] text-dark hover:text-lightBlue font-[500]'>Home</Link>
                 <Link to='trucksList' className=' text-[18px] text-dark hover:text-lightBlue font-[500]'>
                     Trucks
+                </Link>
+                <Link to='bookingList' className=' text-[18px] text-dark hover:text-lightBlue font-[500]'>
+                    Booking List
                 </Link>
             </div>
             <div className="flex flex-col items-center">

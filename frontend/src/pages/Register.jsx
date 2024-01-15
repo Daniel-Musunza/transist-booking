@@ -3,7 +3,6 @@ import { FaUser } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import Header from '../components/Header'
 import Spinner from '../components/Spinner'
 import { register, reset } from '../features/auth/authSlice'
 
@@ -76,7 +75,7 @@ function Register() {
 
   return (
     <>
-    <Header />
+  
     <div className="register">
       
       <section className='heading'>

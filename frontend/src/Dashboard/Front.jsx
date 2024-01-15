@@ -6,7 +6,7 @@ const Front = () => {
   return (
     <>
     <DashHeader />
-    <div className="absolute mt-[90px] flex flex-col px-[20px] ">
+    <div className="absolute mt-[90px] flex flex-col px-[20px] justify-center w-[100%] ">
         <Outlet />
     </div>
     </>

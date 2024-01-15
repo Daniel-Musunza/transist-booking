@@ -49,7 +49,6 @@ function Login() {
 
   return (
     <>
-    <Header/>
     <div className="register">
       
 
